@@ -1,0 +1,101 @@
+DROP DATABASE IF EXISTS student_app;
+
+CREATE DATABASE IF NOT EXISTS student_app;
+USE student_app;
+
+-- Creating table student, program, course, course_entrollment 
+CREATE TABLE student (
+    student_id VARCHAR(4),
+    last_name VARCHAR(20),
+    first_name VARCHAR(20),
+    Sex CHAR(1),
+    dob DATE,
+    pasword VARCHAR(30),
+    fk_program_id VARCHAR(4),    
+   
+    CONSTRAINT student_pk
+    	PRIMARY KEY (student_id)
+);
+
+CREATE TABLE program (
+    program_id VARCHAR(4),
+    -- doe = date of establishment
+    doe DATE,
+   
+    CONSTRAINT program_pk
+    	PRIMARY KEY (program_id)
+);
+
+CREATE TABLE course (
+    course_id VARCHAR(4),
+    course_name VARCHAR(30),
+    credit TINYINT,
+   
+    CONSTRAINT course_pk
+    	PRIMARY KEY (course_id)
+);
+
+CREATE TABLE course_entrollment (
+    student_id VARCHAR(4),
+    course_id VARCHAR(4),
+   
+    CONSTRAINT course_entrollment
+    	PRIMARY KEY (student_id, course_id)
+);
+
+-- inserting values into programs
+INSERT INTO program VALUES
+('pcs1', '2000-01-15'),
+('pph2', '2005-04-01'),
+('pmt3', '1998-02-27');
+
+-- inserting values into student
+INSERT INTO student VALUES
+('sab1', 'Petr', 'Ferrar', 'M', '1997-10-11/', 'abc123', 'pcs1'),
+('sab2', 'Zorn', 'Herta', 'F', '2000-11-14/', '12345', 'pcs1'),
+('sab3', 'Perl', 'Ardyth', 'F', '1998-3-21/', 'pass', 'pph2'),
+('sab4', 'Brett', 'Elora', 'F', '1998-1-25/', 'code1', 'pph2'),
+('sab5', 'Nicko', 'Babbie', 'M', '1999-5-16/'	, 'secret', 'pmt3');
+
+-- inserting values into course
+INSERT INTO course VALUES
+('ccs0', 'Intro to Computer Science', 2),
+('ccs1', 'Advanced Algorithm', 3),
+('cmt1', 'Math 1b', 3),
+('cph1', 'Engineering Physics', 3);
+
+-- inserting values into course_entrollment
+INSERT INTO course_entrollment VALUES
+('sab1', 'ccs0'),
+('sab1', 'ccs1'),
+('sab1', 'cmt1'),
+('sab2', 'ccs0'),
+('sab2', 'ccs1'),
+('sab3', 'ccs0'),
+('sab3', 'cmt1'),
+('sab3', 'cph1'),
+('sab4', 'cmt1'),
+('sab4', 'cph1'),
+('sab5', 'ccs0'),
+('sab5', 'ccs1'),
+('sab5', 'cmt1'),
+('sab5', 'cph1');
+
+-- Alter table to insert FKs
+ALTER TABLE student
+	ADD CONSTRAINT fk_student_program
+	FOREIGN KEY (fk_program_id) REFERENCES program(program_id)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE;
+    
+ALTER TABLE course_entrollment
+	ADD CONSTRAINT fk_course_entrollment_student
+	FOREIGN KEY (student_id) REFERENCES student(student_id)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE;
+    
+ALTER TABLE course_entrollment
+	ADD CONSTRAINT fk_course_entrollment_course
+	FOREIGN KEY (course_id) REFERENCES course(course_id)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE;
