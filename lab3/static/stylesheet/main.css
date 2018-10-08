@@ -123,7 +123,11 @@ header img {
 	text-align: center;
 }
 
-.page_heading a {
+.btn-right {
 	margin-top: -45px;
 	margin-right: 16px;
+}
+
+.btn-left {
+	margin-left: 16px;
 }

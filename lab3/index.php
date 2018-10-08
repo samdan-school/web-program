@@ -10,7 +10,7 @@
 
 <div class="page_heading">
 	<h1>Student List</h1>
-	<a href="<?php echo url_for('student/delete.php'); ?>" class="btn btn-primary float-right">New Student</a>
+	<a href="<?php echo url_for('student/new.php'); ?>" class="btn btn-primary float-right btn-right">New Student</a>
 </div>
 
 <table class="table">
