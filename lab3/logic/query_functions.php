@@ -64,23 +64,25 @@
         return $errors;
     }
 
-    function insert_subject($subject)
+    function insert_student($student)
     {
         global $db;
 
-        $errors = validate_subject($subject);
+        // $errors = validate_subject($subject);
         if (!empty($errors)) {
             return $errors;
         }
 
-        shift_subject_positions(0, $subject['position']);
-
-        $sql = 'INSERT INTO subjects ';
-        $sql .= '(menu_name, position, visible) ';
+        $sql = 'INSERT INTO student ';
+        $sql .= '(student_id, last_name, first_name, sex, dob, password, fk_program_id) ';
         $sql .= 'VALUES (';
-        $sql .= "'" . db_escape($db, $subject['menu_name']) . "',";
-        $sql .= "'" . db_escape($db, $subject['position']) . "',";
-        $sql .= "'" . db_escape($db, $subject['visible']) . "'";
+        $sql .= "'" . db_escape($db, $student['student_id']) . "',";
+        $sql .= "'" . db_escape($db, $student['last_name']) . "',";
+        $sql .= "'" . db_escape($db, $student['first_name']) . "',";
+        $sql .= "'" . db_escape($db, $student['sex']) . "',";
+        $sql .= "'" . db_escape($db, $student['dob']) . "',";
+        $sql .= "'" . db_escape($db, $student['password']) . "',";
+        $sql .= "'" . db_escape($db, $student['fk_program_id']) . "'";
         $sql .= ')';
         $result = mysqli_query($db, $sql);
         // For INSERT statements, $result is true/false

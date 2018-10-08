@@ -10,7 +10,7 @@ CREATE TABLE student (
     first_name VARCHAR(20),
     sex CHAR(1),
     dob DATE,
-    pasword VARCHAR(30),
+    password VARCHAR(30),
     fk_program_id VARCHAR(4),    
    
     CONSTRAINT student_pk
