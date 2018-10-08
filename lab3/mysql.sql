@@ -8,7 +8,7 @@ CREATE TABLE student (
     student_id VARCHAR(4),
     last_name VARCHAR(20),
     first_name VARCHAR(20),
-    Sex CHAR(1),
+    sex CHAR(1),
     dob DATE,
     pasword VARCHAR(30),
     fk_program_id VARCHAR(4),    
