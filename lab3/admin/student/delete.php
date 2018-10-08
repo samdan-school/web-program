@@ -4,8 +4,6 @@
 
 <?php
 	include_once(SHARED_PATH . '/main_header.php');
-
-	$students = find_all_students();
 ?>
 
 <div class="page_heading">

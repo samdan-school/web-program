@@ -35,7 +35,7 @@
 			$html .= '<th scope="row">' . $student_row['student_id'] . '</th>'; 
 			$html .= '<td>' . $student_row['first_name'] . '</td>'; 
 			$html .= '<td>' . $student_row['last_name'] . '</td>'; 
-			$html .= '<td>' . $student_row['Sex'] . '</td>'; 
+			$html .= '<td>' . $student_row['sex'] . '</td>'; 
 			$html .= '<td>' . $student_row['dob'] . '</td>'; 
 			$html .= '<td>' . $student_row['fk_program_id'] . '</td>'; 
 			$html .= '<td><a class="btn btn-info" href=' . url_for('admin/student/edit.php?s_id=' . $student_row['student_id']) . '>Edit</a></td>'; 
