@@ -14,23 +14,18 @@
         return $result;
     }
 
-    function find_subject_by_id($id, $option = [])
+    function find_student_by_id($id, $option = [])
     {
         global $db;
 
-        $visible = $option['visible'] ?? false;
-
-        $sql = 'SELECT * FROM subjects ';
-        $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
-        if ($visible) {
-            $sql .= 'AND visible = true ';
-        }
+        $sql = 'SELECT * FROM student ';
+        $sql .= "WHERE student_id='" . db_escape($db, $id) . "' ";
         // echo $sql;
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
-        $subject = mysqli_fetch_assoc($result);
+        $student = mysqli_fetch_assoc($result);
         mysqli_free_result($result);
-        return $subject; // returns an assoc. array
+        return $student; // returns an assoc. array
     }
 
     function validate_subject($subject)
@@ -96,24 +91,23 @@
         }
     }
 
-    function update_subject($subject)
+    function update_student($student)
     {
         global $db;
 
-        $errors = validate_subject($subject);
         if (!empty($errors)) {
             return $errors;
         }
 
-        $subject_by_id = find_subject_by_id($subject['id']);
-        $start_pos = $subject_by_id['position'];
-        shift_subject_positions($start_pos, $subject['position'], $subject['id']);
-
-        $sql = 'UPDATE subjects SET ';
-        $sql .= "menu_name='" . db_escape($db, $subject['menu_name']) . "', ";
-        $sql .= "position='" . db_escape($db, $subject['position']) . "', ";
-        $sql .= "visible='" . db_escape($db, $subject['visible']) . "' ";
-        $sql .= "WHERE id='" . db_escape($db, $subject['id']) . "' ";
+        $sql = 'UPDATE student SET ';
+        $sql .= "student_id='" . db_escape($db, $student['student_id']) . "', ";
+        $sql .= "last_name='" . db_escape($db, $student['last_name']) . "', ";
+        $sql .= "first_name='" . db_escape($db, $student['first_name']) . "', ";
+        $sql .= "sex='" . db_escape($db, $student['sex']) . "', ";
+        $sql .= "dob='" . db_escape($db, $student['dob']) . "', ";
+        $sql .= "password='" . db_escape($db, $student['password']) . "', ";
+        $sql .= "fk_program_id='" . db_escape($db, $student['fk_program_id']) . "' ";
+        $sql .= "WHERE student_id='" . db_escape($db, $student['student_id']) . "' ";
         $sql .= 'LIMIT 1';
 
         $result = mysqli_query($db, $sql);
@@ -128,16 +122,12 @@
         }
     }
 
-    function delete_subject($id)
+    function delete_student($id)
     {
         global $db;
 
-        $subject_by_id = find_subject_by_id($id);
-        $start_pos = $subject_by_id['position'];
-        shift_subject_positions($start_pos, 0, $id);
-
-        $sql = 'DELETE FROM subjects ';
-        $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+        $sql = 'DELETE FROM student ';
+        $sql .= "WHERE student_id='" . db_escape($db, $id) . "' ";
         $sql .= 'LIMIT 1';
         $result = mysqli_query($db, $sql);
 

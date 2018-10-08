@@ -17,8 +17,8 @@
   <thead>
     <tr>
       <th scope="col">Student ID</th>
-      <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
+      <th scope="col">First Name</th>
       <th scope="col">Sex</th>
       <th scope="col">Data of Birth</th>
       <th scope="col">Program</th>
@@ -33,8 +33,8 @@
 	{
 		$html = '<tr>';
 			$html .= '<th scope="row">' . $student_row['student_id'] . '</th>'; 
-			$html .= '<td>' . $student_row['first_name'] . '</td>'; 
 			$html .= '<td>' . $student_row['last_name'] . '</td>'; 
+			$html .= '<td>' . $student_row['first_name'] . '</td>'; 
 			$html .= '<td>' . $student_row['sex'] . '</td>'; 
 			$html .= '<td>' . $student_row['dob'] . '</td>'; 
 			$html .= '<td>' . $student_row['fk_program_id'] . '</td>'; 
