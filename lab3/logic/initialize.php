@@ -3,14 +3,10 @@
 
   session_start(); // turn on session
 
-  define("ROOT_PATH", dirname(__FILE__));
-  define("PROJECT_PATH", dirname(ROOT_PATH));
-  define("STATIC_PATH", PROJECT_PATH . '/static');
-  define("SHARED_PATH", ROOT_PATH . '/shared');
+  define("LOGIC_PATH", dirname(__FILE__));
+  define("SHARED_PATH", LOGIC_PATH . '/shared');
 
-  $public_end = strpos($_SERVER['SCRIPT_NAME'], '/public') + 7;
-  $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
-  define("WWW_ROOT", $doc_root);
+  define("WWW_ROOT", "");
 
   require_once('functions.php');
   require_once('database.php');
