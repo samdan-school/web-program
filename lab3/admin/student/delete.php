@@ -1,5 +1,5 @@
 <?php
-	require_once('../logic/initialize.php');
+	require_once('../../logic/initialize.php');
 ?>
 
 <?php
@@ -9,8 +9,8 @@
 ?>
 
 <div class="page_heading">
-	<a href="<?php echo url_for('/index.php'); ?>" class="btn btn-primary float-left btn-left">Back</a>
-	<h1>New Student</h1>
+	<a href="<?php echo url_for('/admin/index.php'); ?>" class="btn btn-primary float-left btn-left">Back</a>
+	<h1>Delete Student</h1>
 </div>
 
 <?php

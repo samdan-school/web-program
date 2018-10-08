@@ -1,5 +1,5 @@
 <?php
-	require_once('./logic/initialize.php');
+	require_once('../logic/initialize.php');
 ?>
 
 <?php
@@ -10,7 +10,7 @@
 
 <div class="page_heading">
 	<h1>Student List</h1>
-	<a href="<?php echo url_for('student/new.php'); ?>" class="btn btn-primary float-right btn-right">New Student</a>
+	<a href="<?php echo url_for('admin/student/new.php'); ?>" class="btn btn-primary float-right btn-right">New Student</a>
 </div>
 
 <table class="table">
@@ -38,8 +38,8 @@
 			$html .= '<td>' . $student_row['Sex'] . '</td>'; 
 			$html .= '<td>' . $student_row['dob'] . '</td>'; 
 			$html .= '<td>' . $student_row['fk_program_id'] . '</td>'; 
-			$html .= '<td><a class="btn btn-info" href=' . url_for('student/edit.php?s_id=' . $student_row['student_id']) . '>Edit</a></td>'; 
-			$html .= '<td><a class="btn btn-danger" href=' . url_for('student/delete.php?s_id=' . $student_row['student_id']) . '>Delete</a></td>'; 
+			$html .= '<td><a class="btn btn-info" href=' . url_for('admin/student/edit.php?s_id=' . $student_row['student_id']) . '>Edit</a></td>'; 
+			$html .= '<td><a class="btn btn-danger" href=' . url_for('admin/student/delete.php?s_id=' . $student_row['student_id']) . '>Delete</a></td>'; 
 		$html .= '</tr>';
 		echo $html;
 	}
