@@ -2,17 +2,12 @@
 
     // Subjects
 
-    function find_all_subjects($option = [])
+    function find_all_students($option = [])
     {
         global $db;
 
-        $visible = $option['visible'] ?? false;
-
-        $sql = 'SELECT * FROM subjects ';
-        if ($visible) {
-            $sql .= 'WHERE visible = true ';
-        }
-        $sql .= 'ORDER BY position ASC';
+        $sql = 'SELECT * FROM student ';
+        $sql .= 'ORDER BY first_name ASC';
         //echo $sql;
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
@@ -155,35 +150,30 @@
         }
     }
 
-    // Pages
+    // Pragram
 
-    function find_all_pages()
+    function find_all_pragram()
     {
         global $db;
 
-        $sql = 'SELECT * FROM pages ';
-        $sql .= 'ORDER BY subject_id ASC, position ASC';
+        $sql = 'SELECT * FROM program ';
+        $sql .= 'ORDER BY program_id ASC';
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
         return $result;
     }
 
-    function find_page_by_id($id, $option = [])
+    function find_pragram_by_id($id, $option = [])
     {
         global $db;
 
-        $visible = $option['visible'] ?? false;
-
-        $sql = 'SELECT * FROM pages ';
-        $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
-        if ($visible) {
-            $sql .= 'AND visible = true ';
-        }
+        $sql = 'SELECT * FROM program ';
+		$sql .= "WHERE program_id='" . db_escape($db, $id) . "' ";
+		
         $result = mysqli_query($db, $sql);
-        confirm_result_set($result);
-        $page = mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
-        return $page; // returns an assoc. array
+		confirm_result_set($result);
+		
+        return $result;
     }
 
     function find_pages_by_subject_id($subject_id, $option = [])

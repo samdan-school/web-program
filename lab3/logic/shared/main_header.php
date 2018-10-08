@@ -23,7 +23,6 @@
 		</header>
 	</div>
 
-	<div>
+	<div class="col">
 	<!-- Main content starts here -->
 	<main>
-hi
