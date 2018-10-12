@@ -3,7 +3,7 @@ DROP DATABASE IF EXISTS student_app;
 CREATE DATABASE IF NOT EXISTS student_app;
 USE student_app;
 
--- Creating table student, program, course, course_entrollment 
+-- Creating table student, program, course, course_enrollment 
 CREATE TABLE student (
     student_id VARCHAR(4),
     last_name VARCHAR(20),
@@ -35,11 +35,11 @@ CREATE TABLE course (
     	PRIMARY KEY (course_id)
 );
 
-CREATE TABLE course_entrollment (
+CREATE TABLE course_enrollment (
     student_id VARCHAR(4),
     course_id VARCHAR(4),
    
-    CONSTRAINT course_entrollment
+    CONSTRAINT course_enrollment
     	PRIMARY KEY (student_id, course_id)
 );
 
@@ -64,8 +64,8 @@ INSERT INTO course VALUES
 ('cmt1', 'Math 1b', 3),
 ('cph1', 'Engineering Physics', 3);
 
--- inserting values into course_entrollment
-INSERT INTO course_entrollment VALUES
+-- inserting values into course_enrollment
+INSERT INTO course_enrollment VALUES
 ('sab1', 'ccs0'),
 ('sab1', 'ccs1'),
 ('sab1', 'cmt1'),
@@ -88,13 +88,13 @@ ALTER TABLE student
 	ON UPDATE CASCADE
 	ON DELETE CASCADE;
     
-ALTER TABLE course_entrollment
+ALTER TABLE course_enrollment
 	ADD CONSTRAINT fk_course_entrollment_student
 	FOREIGN KEY (student_id) REFERENCES student(student_id)
 	ON UPDATE CASCADE
 	ON DELETE CASCADE;
     
-ALTER TABLE course_entrollment
+ALTER TABLE course_enrollment
 	ADD CONSTRAINT fk_course_entrollment_course
 	FOREIGN KEY (course_id) REFERENCES course(course_id)
 	ON UPDATE CASCADE
