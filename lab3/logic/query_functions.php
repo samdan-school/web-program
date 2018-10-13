@@ -308,12 +308,12 @@
 
     // Admins
 
-    function find_all_course_by_student_id($id)
+    function find_all_course_enrollment_by_student_id($id)
     {
         global $db;
 
         $sql = 'SELECT * FROM course_enrollment ';
-        $sql .= "WHERE course_id='" . db_escape($db, $id) . "' ";
+        $sql .= "WHERE student_id='" . db_escape($db, $id) . "' ";
         $sql .= 'ORDER BY course_id ';
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);

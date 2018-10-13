@@ -20,4 +20,6 @@
 
 <?php
   db_disconnect($db);
+  global $pdo_connection;
+  $pdo_connection = null;
 ?>

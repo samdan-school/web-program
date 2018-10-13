@@ -89,13 +89,13 @@ ALTER TABLE student
 	ON DELETE CASCADE;
     
 ALTER TABLE course_enrollment
-	ADD CONSTRAINT fk_course_entrollment_student
+	ADD CONSTRAINT fk_course_enrollment_student
 	FOREIGN KEY (student_id) REFERENCES student(student_id)
 	ON UPDATE CASCADE
 	ON DELETE CASCADE;
     
 ALTER TABLE course_enrollment
-	ADD CONSTRAINT fk_course_entrollment_course
+	ADD CONSTRAINT fk_course_enrollment_course
 	FOREIGN KEY (course_id) REFERENCES course(course_id)
 	ON UPDATE CASCADE
 	ON DELETE CASCADE;

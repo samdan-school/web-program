@@ -13,6 +13,33 @@
 ?>
 
 <?php
+	// Updating Class Enrollment
+	if ($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		// print_r($_POST['courses']);
+		foreach($_POST['courses'] as $input_course)
+		{
+			if ( ! find_course_enrollment_by_student_and_course_id($id, $input_course) )
+			{
+				insert_course_enrollment($id, $input_course);
+			}
+		}
+
+		while ($course = mysqli_fetch_assoc($course_enrollments))
+		{
+			if( ! in_array( $course['course_id'], $_POST['courses'] ) )
+			{
+				delete_course_enrollment_by_student_and_course_id($id, $course['course_id']);
+			}
+		}
+		
+		mysqli_data_seek($course_enrollments, 0);
+		$course = null;
+		redirect_to(url_for('/student/index.php?s_id=' . $id));
+	}
+?>
+
+<?php
 	include_once(SHARED_PATH . '/main_header.php');
 ?>
 
@@ -21,43 +48,59 @@
 	<h1>Course Table</h1>
 </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Student ID</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Sex</th>
-      <th scope="col">Data of Birth</th>
-      <th scope="col">Program</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
+<form method="POST" action="#">
+	<table class="table">
+	<thead>
+		<tr>
+		<th scope="col">Course ID</th>
+		<th scope="col">Course Name</th>
+		<th scope="col">Credit</th>
+		<th scope="col">Enrolled</th>
+		</tr>
+	</thead>
+	<tbody>
 
-  <?php 
-	while ($course_enrollment = mysqli_fetch_assoc($course_enrollments))
-	{
-		print_r($course_enrollment);
+	<?php
+		$html = '';
+		$selected_course = [];
+		while ($course_enrollment = mysqli_fetch_assoc($course_enrollments))
+		{
+			while ($course = mysqli_fetch_assoc($courses))
+			{
+				if($course['course_id'] == $course_enrollment['course_id'])
+				{
+					$html .= '<tr class="table-success">';
+						$html .= '<th scope="row">' . $course['course_id'] . '</th>'; 
+						$html .= '<td>' . $course['course_name'] . '</td>'; 
+						$html .= '<td>' . $course['credit'] . '</td>'; 
+						$html .= '<td><input name="courses[]" checked type="checkbox" value="'. $course['course_id'] .'" />';
+					$html .= '</tr>';
+					array_push($selected_course, $course['course_id']);
+					break;
+				}
+			}
+		}
+
+		mysqli_data_seek($courses, 0);
 		while ($course = mysqli_fetch_assoc($courses))
 		{
-			if($course['course_id'] == $course_enrollment['course_id'])
+			if( ! in_array( $course['course_id'], $selected_course ) )
 			{
-				$html = '<tr>';
+				$html .= '<tr>';
 					$html .= '<th scope="row">' . $course['course_id'] . '</th>'; 
 					$html .= '<td>' . $course['course_name'] . '</td>'; 
 					$html .= '<td>' . $course['credit'] . '</td>'; 
+					$html .= '<td><input name="courses[]" type="checkbox"  value="'. $course['course_id'] .'" />';
 				$html .= '</tr>';
-				echo $html;
 			}
 		}
-	}
-  ?>
+		echo $html;
+		?>
 
-  </tbody>
-</table>
-
+	</tbody>
+	</table>
+	<input type="submit" value="Save">
+</form>
 
 <?php
 	include_once(SHARED_PATH . '/main_footer.php');

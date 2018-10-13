@@ -9,8 +9,13 @@
   define("WWW_ROOT", "");
 
   require_once('functions.php');
+
+  require_once('pdo_database.php');
+  require_once('pdo_query_functions.php');
+
   require_once('database.php');
   require_once('query_functions.php');
+  
   require_once('validation_functions.php');
 //   require_once('auth_functions.php');
 
