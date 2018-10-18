@@ -1,7 +1,6 @@
 <?php
 
-    // Subjects
-
+    // STUDENT
     function find_all_students($option = [])
     {
         global $db;
@@ -217,4 +216,17 @@
             db_disconnect($db);
             exit;
         }
+    }
+
+    // STAFF
+    function find_all_staff($option = [])
+    {
+        global $db;
+
+        $sql = 'SELECT * FROM staff ';
+        $sql .= 'ORDER BY first_name ASC';
+        //echo $sql;
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        return $result;
     }

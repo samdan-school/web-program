@@ -8,9 +8,8 @@ CREATE TABLE student (
     student_id VARCHAR(4),
     last_name VARCHAR(20),
     first_name VARCHAR(20),
-    position VARCHAR(20),
+    sex VARCHAR(1),
     dob DATE,
-    password VARCHAR(30),
     fk_program_id VARCHAR(4),    
    
     CONSTRAINT student_pk
@@ -19,6 +18,7 @@ CREATE TABLE student (
 
 CREATE TABLE program (
     program_id VARCHAR(4),
+    program_name VARCHAR(40),
     -- doe = date of establishment
     doe DATE,
 
@@ -47,7 +47,7 @@ CREATE TABLE staff (
 	staff_id VARCHAR(4),
     last_name VARCHAR(20),
     first_name VARCHAR(20),
-    sex CHAR(1),
+    position CHAR(30),
 	-- Data of working - ajild orson udur
     dow DATE,
    
@@ -65,17 +65,17 @@ CREATE TABLE users (
 
 -- inserting values into programs
 INSERT INTO program VALUES
-('pcs1', '2000-01-15'),
-('pph2', '2005-04-01'),
-('pmt3', '1998-02-27');
+('pcs1', 'Computer Science', '2000-01-15'),
+('pph2', 'Physics', '2005-04-01'),
+('pmt3', 'Mathematics Engineering', '1998-02-27');
 
 -- inserting values into student
 INSERT INTO student VALUES
-('sab1', 'Petr', 'Ferrar', 'M', '1997-10-11/', 'abc123', 'pcs1'),
-('sab2', 'Zorn', 'Herta', 'F', '2000-11-14/', '12345', 'pcs1'),
-('sab3', 'Perl', 'Ardyth', 'F', '1998-3-21/', 'pass', 'pph2'),
-('sab4', 'Brett', 'Elora', 'F', '1998-1-25/', 'code1', 'pph2'),
-('sab5', 'Nicko', 'Babbie', 'M', '1999-5-16/'	, 'secret', 'pmt3');
+('sab1', 'Petr', 'Ferrar', 'M', '1997-10-11/', 'pcs1'),
+('sab2', 'Zorn', 'Herta', 'F', '2000-11-14/', 'pcs1'),
+('sab3', 'Perl', 'Ardyth', 'F', '1998-3-21/', 'pph2'),
+('sab4', 'Brett', 'Elora', 'F', '1998-1-25/', 'pph2'),
+('sab5', 'Nicko', 'Babbie', 'M', '1999-5-16', 'pmt3');
 
 -- inserting values into course
 INSERT INTO course VALUES
