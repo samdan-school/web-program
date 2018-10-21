@@ -1,28 +1,35 @@
 <?php
 	require_once('../logic/initialize.php');
 
+	$page_title = 'Log in';
+
 	if (is_post_request())
 	{
-		if( isset($_POST['student_id']) && isset($_POST['password']) )
-		{
-			if ( strlen($_POST['student_id']) != 4 )
-			{
-				redirect_to(url_for('/student/login.php'));
-			}
-			if ( strlen($_POST['password']) <= 0 || strlen($_POST['password']) > 30 )
-			{
-				redirect_to(url_for('/student/login.php'));
-			}
+		$user_id = $_POST['user_id'] ?? '';
+		$password = $_POST['password'] ?? '';
+		$remember_me = $_POST['remember_me'] ?? '';
 
-			if ( find_student_by_id($_POST['student_id']) )
-			{
-				redirect_to(url_for('/student/index.php?s_id=' . $_POST['student_id']));
-			} 
-			else
-			{
-				redirect_to(url_for('/student/login.php'));
+		if ( $user = find_users_by_id($_POST['user_id']) )
+		{
+			if ( password_verify($password, $user['password']) ) {
+
+				if ($remember_me) {
+					setcookie('user_id', $user_id, time() + 86400, "/"); // 86400 = 1 day and global path usage cookie
+				}
+
+				if ( $user['user_id'][0] == 's' ) {
+					redirect_to(url_for('/student/index.php?s_id=' . $_POST['user_id']));
+				}
+
+				if ( $user['user_id'][0] == 'a' ) {
+					redirect_to(url_for('/admin/index.php'));
+				}
 			}
 		}
+		else
+		{
+			redirect_to(url_for('/student/login.php'));
+		}			
 	}
 ?>
 
@@ -31,14 +38,14 @@
 ?>
 
 <div class="page_heading">
-	<h1>Student Login</h1>
+	<h1>Login</h1>
 </div>
 
 <form action="#" method="POST">
 	<div class="form-group">
-		<label for="student_id">Student ID</label>
-		<input name="student_id" type="text" class="form-control" 
-			id="student_id" placeholder="Enter Student Id" maxlength="4" size="4" required>
+		<label for="user_id">USER ID</label>
+		<input name="user_id" type="text" class="form-control" value="<?php echo isset($_COOKIE['remember_me']) ? $_COOKIE['remember_me'] : ''; ?>"
+			id="user_id" placeholder="Enter User Id" maxlength="4" size="4" required>
 	</div>
 
 	<div class="form-group">
@@ -46,6 +53,11 @@
 		<input name="password" type="password" class="form-control" 
 			id="password" placeholder="Enter Your Password" maxlength="30" size="30" required>
 	</div>
+	
+	<div class="form-group form-check">
+		<input name="remember_me" type="checkbox" class="form-check-input" id="remember_me">
+		<label class="form-check-label" for="remember_me">Remember Me</label>
+  </div>
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
 

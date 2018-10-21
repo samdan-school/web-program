@@ -218,6 +218,21 @@
         }
     }
 
+    function find_users_by_id($id, $option = [])
+    {
+        global $db;
+
+        $sql = 'SELECT * FROM users ';
+        $sql .= "WHERE user_id='" . db_escape($db, $id) . "' ";
+        // echo $sql;
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        $student = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return $student; // returns an assoc. array
+    }
+
+
     // STAFF
     function find_all_staff($option = [])
     {

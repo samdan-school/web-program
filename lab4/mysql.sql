@@ -125,15 +125,3 @@ ALTER TABLE course_enrollment
 	FOREIGN KEY (course_id) REFERENCES course(course_id)
 	ON UPDATE CASCADE
 	ON DELETE CASCADE;
-    
-ALTER TABLE users
-	ADD CONSTRAINT fk_user_student
-	FOREIGN KEY (user_id) REFERENCES student(student_id)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE;
-    
-ALTER TABLE users
-	ADD CONSTRAINT fk_user_staff
-	FOREIGN KEY (user_id) REFERENCES staff(staff_id)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE;
