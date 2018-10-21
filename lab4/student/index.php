@@ -1,11 +1,9 @@
 <?php
 	require_once('../logic/initialize.php');
 
-	// Checking there is id
-	if (!isset($_GET['s_id'])) {
-		redirect_to(url_for('/student/login.php'));
-	}
-	$id = $_GET['s_id'];
+	$id = $_SESSION['student_id'];
+	require_login_student();
+
 	$student = find_student_by_id($id);
 
 	$courses = find_all_course();

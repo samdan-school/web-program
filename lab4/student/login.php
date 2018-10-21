@@ -3,6 +3,14 @@
 
 	$page_title = 'Log in';
 
+	if (is_logged_in_student()) {
+		redirect_to(url_for('/student/index.php'));
+	}
+	
+	if (is_logged_in_staff()) {
+		redirect_to(url_for('/admin/index.php'));
+	}
+
 	if (is_post_request())
 	{
 		$user_id = $_POST['user_id'] ?? '';
@@ -17,11 +25,11 @@
 					setcookie('user_id', $user_id, time() + 86400, "/"); // 86400 = 1 day and global path usage cookie
 				}
 
-				if ( $user['user_id'][0] == 's' ) {
-					redirect_to(url_for('/student/index.php?s_id=' . $_POST['user_id']));
+				if ( $user['user_id'][0] == 's' && log_in($user)) {
+					redirect_to(url_for('/student/index.php'));
 				}
 
-				if ( $user['user_id'][0] == 'a' ) {
+				if ( $user['user_id'][0] == 'a' && log_in($user)) {
 					redirect_to(url_for('/admin/index.php'));
 				}
 			}

@@ -1,5 +1,8 @@
 <?php
 	require_once('../logic/initialize.php');
+
+	// $id = $_SESSION['student_id'];
+	require_login_staff();
 ?>
 
 <?php
