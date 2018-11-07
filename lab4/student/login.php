@@ -1,6 +1,10 @@
 <?php
 	require_once('../logic/initialize.php');
 
+    $errors = [];
+    $username = '';
+    $password = '';
+
 	if (is_post_request())
 	{
 		if( isset($_POST['student_id']) && isset($_POST['password']) )
@@ -14,9 +18,12 @@
 				redirect_to(url_for('/student/login.php'));
 			}
 
-			if ( find_student_by_id($_POST['student_id']) )
-			{
-				redirect_to(url_for('/student/index.php?s_id=' . $_POST['student_id']));
+			if ( $student = find_student_by_id( sanitizeString($_POST['student_id'])) )
+			{	
+				if ( $student['password'] == sanitizeString($_POST['password'])  )
+				{
+					redirect_to(url_for('/student/index.php?s_id=' . $_POST['student_id']));
+				}
 			} 
 			else
 			{

@@ -1,7 +1,7 @@
 <?php
   function db_connect()
   {
-      $connection = mysqli_connect('localhost', 'root', '', 'student_app');
+      $connection = mysqli_connect('localhost', 'root', '', 'student_app_04');
       confirm_db_connect();
       return $connection;
   }

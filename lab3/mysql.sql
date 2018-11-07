@@ -1,14 +1,14 @@
-DROP DATABASE IF EXISTS student_app;
+DROP DATABASE IF EXISTS student_app_04;
 
-CREATE DATABASE IF NOT EXISTS student_app;
-USE student_app;
+CREATE DATABASE IF NOT EXISTS student_app_04;
+USE student_app_04;
 
 -- Creating table student, program, course, course_enrollment 
 CREATE TABLE student (
     student_id VARCHAR(4),
     last_name VARCHAR(20),
     first_name VARCHAR(20),
-    sex CHAR(1),
+    position VARCHAR(20),
     dob DATE,
     password VARCHAR(30),
     fk_program_id VARCHAR(4),    
@@ -21,7 +21,7 @@ CREATE TABLE program (
     program_id VARCHAR(4),
     -- doe = date of establishment
     doe DATE,
-   
+
     CONSTRAINT program_pk
     	PRIMARY KEY (program_id)
 );
@@ -39,8 +39,28 @@ CREATE TABLE course_enrollment (
     student_id VARCHAR(4),
     course_id VARCHAR(4),
    
-    CONSTRAINT course_enrollment
+    CONSTRAINT course_enrollment_pk
     	PRIMARY KEY (student_id, course_id)
+);
+
+CREATE TABLE staff (
+	staff_id VARCHAR(4),
+    last_name VARCHAR(20),
+    first_name VARCHAR(20),
+    sex CHAR(1),
+	-- Data of working - ajild orson udur
+    dow DATE,
+   
+    CONSTRAINT staff_pk
+    	PRIMARY KEY (staff_id)
+);
+
+CREATE TABLE users (
+	user_id VARCHAR(4),
+	password VARCHAR(255),
+   
+    CONSTRAINT user_pk
+    	PRIMARY KEY (user_id)
 );
 
 -- inserting values into programs
@@ -81,6 +101,12 @@ INSERT INTO course_enrollment VALUES
 ('sab5', 'cmt1'),
 ('sab5', 'cph1');
 
+-- inserting values into staff
+INSERT INTO staff VALUES
+('aab1', 'Zen', 'Mituki', 'M', '1990-01-01'),
+('acd2', 'Tomita', 'Fumiko', 'F', '1992-09-26'),
+('aef3', 'Akira', 'Daichi', 'M', '1989-11-19');
+
 -- Alter table to insert FKs
 ALTER TABLE student
 	ADD CONSTRAINT fk_student_program
@@ -97,5 +123,17 @@ ALTER TABLE course_enrollment
 ALTER TABLE course_enrollment
 	ADD CONSTRAINT fk_course_enrollment_course
 	FOREIGN KEY (course_id) REFERENCES course(course_id)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE;
+    
+ALTER TABLE users
+	ADD CONSTRAINT fk_user_student
+	FOREIGN KEY (user_id) REFERENCES student(student_id)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE;
+    
+ALTER TABLE users
+	ADD CONSTRAINT fk_user_staff
+	FOREIGN KEY (user_id) REFERENCES staff(staff_id)
 	ON UPDATE CASCADE
 	ON DELETE CASCADE;

@@ -72,3 +72,12 @@
 			return '<div id="message">' . h($msg) . '</div>';
 		}
 	}
+
+	function sanitizeString($input)
+	{
+		$input = stripslashes($input);
+		$input = htmlentities($input);
+		$input = strip_tags($input);
+
+		return $input;
+	}
