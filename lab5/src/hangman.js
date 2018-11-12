@@ -5,6 +5,7 @@ import './hangman.scss';
 var hImage = document.getElementById("image");
 var wordDiv = document.getElementById("word");
 var start = document.getElementById("start");
+var timerDiv = document.getElementById("timer");
 
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
@@ -16,32 +17,25 @@ var oth = 0;
 var lives = 0;
 var gameState = false;
 var guess = 0;
+var sec = 0;
 var skip = '';
 
 
 insertInputValues(wordDiv, fruits[nth].length);
 
 start.addEventListener('click', () => {
-	countdown(times[nth], (sec, interval) => {
-		interval.clearInterval();
-		if (oth != nth) {
-			oth = nth;
-			countdown(times[nth], (sec, interval) => {
-				interval.clearInterval();
-				if (oth != nth) {
-					oth = nth;
-
-				}
-			}, () => {
-				alert("You Lose!");
-				location.reload();
-			});
-			return;
+	sec = times[nth];
+	timerDiv.innerHTML = sec;
+	var interval = setInterval(function () {
+		if (sec <= 0) {
+			clearInterval(interval);
+			alert("You Lose!");
+			location.reload();
+		} else {
+			sec--;
+			timerDiv.innerHTML = sec;
 		}
-	}, () => {
-		alert("You Lose!");
-		location.reload();
-	});
+	}, 1000);
 
 	document.onkeypress = function (evt) {
 		evt = evt || window.event;
@@ -57,14 +51,34 @@ start.addEventListener('click', () => {
 				console.log("g " + guess);
 				console.log(fruits[nth].length);
 				if (guess == fruits[nth].length) {
+					// Reseting game state
 					nth++;
 					guess = 0;
 					skip = '';
-					console.log("n " + nth);
+
+					// Check win ot not
 					if (nth == fruits.length) {
 						alert("WIN!");
 						location.reload();
+						return;
 					}
+
+					// Reset and Start over time
+					clearInterval(interval); sec = times[nth];
+					sec = times[nth];
+					timerDiv.innerHTML = sec;
+					interval = setInterval(function () {
+						if (sec <= 0) {
+							clearInterval(interval);
+							alert("You Lose!");
+							location.reload();
+						} else {
+							sec--;
+							timerDiv.innerHTML = sec;
+						}
+					}, 1000);
+
+					console.log("n " + nth);
 					insertInputValues(wordDiv, fruits[nth].length);
 				}
 			} else {
@@ -123,4 +137,12 @@ function countdown(sec, tick, done) {
 			sec--;
 		}
 	}, 1000)
+}
+
+
+function startTime(times, nth) {
+	countdown(times[nth], (sec, interval) => {
+
+	}, () => {
+	});
 }
