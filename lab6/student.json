@@ -1,0 +1,20 @@
+{
+	"S001": {
+		"Name": "Sam Dan",
+		"SisiId": "S001",
+		"Program": "IT",
+		"lesson": []
+	},
+	"S002": {
+		"Name": "Kore Kun",
+		"SisiId": "S002",
+		"Program": "Math",
+		"lesson": []
+	},
+	"S003": {
+		"Name": "Kani Chan",
+		"SisiId": "S003",
+		"Program": "English",
+		"lesson": []
+	}
+}
