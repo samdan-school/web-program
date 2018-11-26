@@ -1,0 +1,46 @@
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 0 auto;
+  td {
+    width: 70px;
+    height: 70px;
+    border: 1px solid black;
+  }
+}
+
+main {
+  margin: 0 auto;
+}
+
+input[class^="color-"] {
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+  border: 1px #000 solid;
+}
+
+.color-White {
+  background-color: #FFF;
+  color: black;
+}
+.color-Black {
+  background-color: #000;
+}
+.color-Red {
+  background-color: #fd0807;
+}
+.color-Yellow {
+  background-color: #fdd85d;
+}
+.color-Green {
+  background-color: #abd08c;
+}
+.color-Blue {
+  background-color: #2d5398;
+}
+
+.color-div {
+  width: 500px;
+  margin: 10px auto;
+}

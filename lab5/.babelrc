@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "@babel/env",
+    "@babel/typescript"
+  ],
+  "plugins": [
+    "@babel/proposal-class-properties",
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/proposal-object-rest-spread"
+  ]
+}

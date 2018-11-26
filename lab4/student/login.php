@@ -1,6 +1,7 @@
 <?php
 	require_once('../logic/initialize.php');
 
+<<<<<<< HEAD
 	$page_title = 'Log in';
 
 	if (is_logged_in_student()) {
@@ -10,6 +11,11 @@
 	if (is_logged_in_staff()) {
 		redirect_to(url_for('/admin/index.php'));
 	}
+=======
+    $errors = [];
+    $username = '';
+    $password = '';
+>>>>>>> 0d3237e0fe119b2e9a6fa96e4234b3b3c4cfba4a
 
 	if (is_post_request())
 	{
@@ -25,6 +31,7 @@
 					setcookie('user_id', $user_id, time() + 86400, "/"); // 86400 = 1 day and global path usage cookie
 				}
 
+<<<<<<< HEAD
 				if ( $user['user_id'][0] == 's' && log_in($user)) {
 					redirect_to(url_for('/student/index.php'));
 				}
@@ -32,6 +39,18 @@
 				if ( $user['user_id'][0] == 'a' && log_in($user)) {
 					redirect_to(url_for('/admin/index.php'));
 				}
+=======
+			if ( $student = find_student_by_id( sanitizeString($_POST['student_id'])) )
+			{	
+				if ( $student['password'] == sanitizeString($_POST['password'])  )
+				{
+					redirect_to(url_for('/student/index.php?s_id=' . $_POST['student_id']));
+				}
+			} 
+			else
+			{
+				redirect_to(url_for('/student/login.php'));
+>>>>>>> 0d3237e0fe119b2e9a6fa96e4234b3b3c4cfba4a
 			}
 		}
 		else
