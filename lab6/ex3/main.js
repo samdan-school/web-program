@@ -1,3 +1,5 @@
+htmlCode = '';
+
 window.onload = () => {
     html = document.getElementsByTagName("html")[0];
 
@@ -5,18 +7,17 @@ window.onload = () => {
     node.className = "infoDiv";
     document.getElementsByTagName("body")[0].appendChild(node);
 
-    htmlCode = find_child(html);
-    console.log(htmlCode);
+    find_child(html);
+    node.innerHTML = (htmlCode);
 }
 
 function find_child(element, txt) {
     children = element.childNodes;
-    if (children.length > 0) {
 
+    if (children.length > 0) {
         children.forEach(child => {
-            pass = renderInfo(element);
-            return pass;
-            return pass + find_child(child, txt)
+            renderInfo(child);
+            find_child(child);
         });
     }
 }
@@ -27,7 +28,8 @@ function renderInfo(element) {
     var my_attrs = '';
 
     if (element.nodeName == "#text") {
-        tag = element.data;
+        // tag = element.data;
+        return;
     } else {
         tag = '+' + element.tagName;
     }
@@ -39,6 +41,6 @@ function renderInfo(element) {
         }
         my_attrs += ']';
     }
-    return "<div>" + tag + my_attrs + "</div>";
+    htmlCode += "<div>" + tag + my_attrs + "</div>";
 }
 
