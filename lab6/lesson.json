@@ -2,25 +2,25 @@
 	"L001": {
 		"Name": "Intro to CS",
 		"LessonIndex": "L001",
-		"Credit": "5",
+		"Credit": 5,
 		"Seat": 2
 	},
 	"L002": {
 		"Name": "Java",
 		"LessonIndex": "L002",
-		"Credit": "7",
+		"Credit": 7,
 		"Seat": 3
 	},
 	"L003": {
 		"Name": "OOP",
 		"LessonIndex": "L003",
-		"Credit": "7",
+		"Credit": 7,
 		"Seat": 2
 	},
 	"L004": {
 		"Name": "Web",
 		"LessonIndex": "L004",
-		"Credit": "7",
+		"Credit": 7,
 		"Seat": 3
 	}
 }

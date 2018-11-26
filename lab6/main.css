@@ -2,3 +2,15 @@
 	width: 70%;
 	margin: auto;
 }
+
+.cancel-btn {
+	background-color: #ef8c8c;
+}
+
+.full-btn {
+	background-color: #dee0e2;
+}
+
+.enroll-btn {
+	background-color: #c3ffd0;
+}

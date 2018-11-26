@@ -3,13 +3,17 @@
 		"Name": "Sam Dan",
 		"SisiId": "S001",
 		"Program": "IT",
-		"lesson": []
+		"lesson": [
+			"L001"
+		]
 	},
 	"S002": {
 		"Name": "Kore Kun",
 		"SisiId": "S002",
 		"Program": "Math",
-		"lesson": []
+		"lesson": [
+			"L001"
+		]
 	},
 	"S003": {
 		"Name": "Kani Chan",

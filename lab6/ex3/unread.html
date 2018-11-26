@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)http://www.unread.today/ -->
+<html lang="en" class="uk-height-1-1 uk-notouch js csstransitions">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Unread</title>
+  <meta name="description" content="Daily reads for entrepreneurs, executives and creatives. Never leave anything unread.">
+  <meta name="keywords" content="unread, today, шинэ бизнес, шинэ апп, онцлох апп, уншвар, холбоос, би хэрхэн ажилладаг вэ, номын хэсэг, entrepreneur, creative, executive, business, professional">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">
+
+  <meta property="fb:pages" content="1447549385546333">
+
+  <meta property="og:title" content="Unread">
+  <meta property="og:image" content="http://www.unread.today/img/unreadtoday.png">
+  <meta property="og:site_name" content="Unread">
+  <meta property="og:description" content="Daily reads for entrepreneurs, executives and creatives. Never leave anything unread.">
+
+  <link href="http://www.unread.today/img/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="./unread_files/uikit.almost-flat.css">
+  <link rel="stylesheet" type="text/css" href="./unread_files/tooltip.min.css">
+  <link rel="stylesheet" type="text/css" href="./unread_files/style_v2.css">
+  <style>
+    @media screen and (max-width: 400px) {
+        .remove-float-small {
+          float: none!important;
+        }
+      }
+    </style>
+
+  <script async="" src="./unread_files/analytics.js"></script>
+  <script src="./unread_files/jquery.min.js"></script>
+  <script type="text/javascript" src="./unread_files/uikit.min.js"></script>
+  <script type="text/javascript" src="./unread_files/jquery.countdown.min.js"></script>
+  <script type="text/javascript" src="./unread_files/sticky.min.js"></script>
+  <script type="text/javascript" src="./unread_files/tooltip.min.js"></script>
+  <script type="text/javascript" src="./unread_files/modernizr.custom.js"></script>
+  <script type="text/javascript" src="./unread_files/unread.js"></script>
+  <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+  <link href="./unread_files/css" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <style>
+    .infoDiv {
+      margin-left: 30px;
+    }
+    .main-menu .uk-dropdown a {
+    height:30px;
+    margin: 0;
+  }
+  
+  .main-menu .uk-dropdown a:hover,
+  .main-menu .uk-dropdown a:focus {
+    background-color: #0077dd;
+  }
+  .main-menu .uk-dropdown li {
+    line-height: 30px;
+  }
+  @media screen and (max-width: 380px) {
+    .hidden-tiny {
+      display:none;
+    }
+  }
+</style>
+
+
+
+  <div class="header">
+    <div class="uk-container uk-container-center uk-position-relative ">
+      <div class="menu text-roboto-condensed uk-text-uppercase">
+        <span class="text-12 uk-float-right hidden-tiny" style="margin-top: 20px;"><span class="uk-hidden-small "><i
+              class="uk-icon-circle-o-notch uk-icon-spin"></i> ДАРААГИЙН НИЙТЛЭЛ ХҮРТЭЛ</span> <span id="newpostcountdown"
+            class="uk-text-bold text-blue">17 ЦАГ 14 МИНУТ 47</span></span>
+        <a href="http://www.unread.today/" id="logo">
+          <img src="./unread_files/unread.png" width="130" style="padding-bottom: 3px;" alt=""> </a>
+        <div class="uk-button-dropdown main-menu" data-uk-dropdown="{mode:&#39;click&#39;}">
+
+          <a class="menuicon">
+            <img src="./unread_files/menu.png" width="30" style="padding-bottom: 6px;" alt=""> </a>
+
+          <!-- This is the dropdown -->
+          <div class="uk-dropdown uk-dropdown-small">
+            <ul class="uk-nav uk-nav-dropdown">
+              <li><a href="http://www.unread.today/posts/category/2">Онцлох Бизнес</a></li>
+              <li><a href="http://www.unread.today/posts/category/1">Апп Тойм</a></li>
+              <li><a href="http://www.unread.today/posts/category/3">Би хэрхэн ажилладаг вэ?</a></li>
+              <li><a href="http://www.unread.today/posts/category/4">Мэдүүштэй</a></li>
+              <li><a href="http://www.unread.today/posts/category/5">#Random</a></li>
+              <li><a href="http://www.unread.today/posts/category/6">Номын хэсгээс</a></li>
+              <li><a href="http://www.unread.today/posts/category/7">7 Хоногийн Тойм</a></li>
+              <li><a href="http://www.unread.today/posts/category/8">Бизнес Зөвлөгөө</a></li>
+              <li><a href="http://www.unread.today/posts/category/10">Тогтвортой хөгжлийн зорилгууд </a></li>
+            </ul>
+          </div>
+
+        </div>
+        <a href="http://www.unread.today/#search-modal" data-uk-modal="{center:true}">
+          <img src="./unread_files/search.png" width="18" style="padding-bottom: 2px;" alt=""> </a>
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- This is the search modal -->
+  <div id="search-modal" class="uk-modal">
+    <div class="uk-modal-dialog">
+      <a class="uk-modal-close uk-close"></a>
+      <form action="http://www.unread.today/Posts/search" class="uk-form" id="PostIndexForm" method="get"
+        accept-charset="utf-8">
+        <h2 class="uk-text-uppercase text-roboto-condensed uk-text-bold" style="font-size: 17px!important">Хайх зүйлээ
+          бичээд enter дарна уу</h2>
+        <div class="uk-form-row">
+          <input id="core-search" type="search" name="search" class="uk-width-1-1 uk-form-large" value="" autofocus="">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var countFrom = new Date('2018/11/27 13:05:00');
+
+    $("#newpostcountdown")
+      .countdown(countFrom, function (event) {
+        $(this).text(event.strftime('%H ЦАГ %M МИНУТ %S'));
+      });
+  </script>
+  <div class="uk-container uk-container-center">
+  </div>
+
+  <div class="messagebackground">
+    <div class="uk-container uk-container-center">
+      <div class="unreadbubble">
+        <h3 class="text-roboto-condensed uk-margin-remove">Оройн мэнд <img src="./unread_files/smiling.png" width="18"
+            alt=""></h3>
+      </div>
+
+      <div class="unreadbubble featured" style="min-width: calc(100% - 70px);">
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12"><span class="text-red uk-text-bold uk-margin-right randomblinker">Онцлох</span><span>•<i
+              class="uk-icon-eye uk-margin-left"></i> 220 &nbsp; <i class="uk-icon-comment"></i> 0 </span>
+        </p>
+
+        <a href="http://www.unread.today/posts/post/1724">
+          <h2 class="text-roboto-condensed uk-margin-remove unread-article" unread-tag="thisweek" articleid="1724"><span
+              class="text-red dot unread-dot">●</span>
+            Онцлох брэнд: Халгай - Үс сайхан бол зүс сайхан </h2>
+        </a>
+      </div>
+      <div class="unreadbubble today" style="background-image: url(&#39;http://www.unread.today/app/webroot/files/fda0119e7101568f227e0f873e6a92db.jpg&#39;);position:relative"><a
+          href="http://www.unread.today/posts/post/1724" style="position:absolute;top:0;bottom:0;left:0;right:0;"></a></div>
+
+      <div class="unreadbubble banner">
+        <a href="http://www.unread.today/banners/rd/70?url=https%3A%2F%2Fshoppy.mn%2FUNPLUG" target="_blank">
+          <img src="./unread_files/cf1aa0702cdbb7b9e6f168d4ffa39bfc.jpg" class="uk-responsive-width" alt=""> </a>
+      </div>
+
+      <div class="unreadbubblebutton">
+        <a href="http://www.unread.today/#lastweek" data-uk-smooth-scroll="">
+          Үргэлжлүүлэх <i class="uk-icon-angle-right uk-margin-small-left"></i>
+        </a>
+      </div>
+
+      <!--<hr class="bubbledivider"/>-->
+      <div class="uk-clearfix uk-margin-large-bottom"></div>
+
+
+      <div class="weektitle unread-total" id="lastweek" unread-tag="week1">
+        <h2 class="text-roboto-condensed uk-text-uppercase uk-text-bold text-white uk-float-left">Өнгөрсөн Долоо Хоногт</h2>
+        <span class="unreadbadge uk-float-left unread-total-number" title="Таны уншаагүй нийтлэлийн тоо">8</span>
+      </div>
+
+
+      <div class="unreadbubble">
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12 uk-float-right remove-float-small">Өчигдөр
+        </p>
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12">
+          <a href="http://www.unread.today/posts/category/7" class="uk-text-bold uk-margin-right">7 Хоногийн Тойм</a>
+          <span>•<i class="uk-icon-eye uk-margin-left"></i> 4631 &nbsp; <i class="uk-icon-comment"></i> 0 </span>
+        </p>
+        <a href="http://www.unread.today/posts/post/1714">
+          <h2 class="text-roboto-condensed uk-margin-remove unread-article" unread-tag="week1" articleid="1714"><span
+              class="text-blue dot unread-dot">●</span>
+            7 хоногийн тойм: 6.2 тэрбумын баасан гараг + 14 настай сайн санааны элч + 224 сая хандалттай трэйлэр </h2>
+        </a>
+      </div>
+      <div class="unreadbubble">
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12 uk-float-right remove-float-small">Уржигдар
+        </p>
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12">
+          <a href="http://www.unread.today/posts/category/6" class="uk-text-bold uk-margin-right">Номын хэсгээс</a>
+          <span>•<i class="uk-icon-eye uk-margin-left"></i> 1248 &nbsp; <i class="uk-icon-comment"></i> 0 </span>
+        </p>
+        <a href="http://www.unread.today/posts/post/1723">
+          <h2 class="text-roboto-condensed uk-margin-remove unread-article" unread-tag="week1" articleid="1723"><span
+              class="text-blue dot unread-dot">●</span>
+            Ч.Ганжавхлангийн "8 км 400 м" баримтат өгүүллийн номын тухай </h2>
+        </a>
+      </div>
+      <div class="unreadbubble">
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12 uk-float-right remove-float-small">Баасан
+        </p>
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12">
+          <a href="http://www.unread.today/posts/category/5" class="uk-text-bold uk-margin-right">#Random</a> <span>•<i
+              class="uk-icon-eye uk-margin-left"></i> 10877 &nbsp; <i class="uk-icon-comment"></i> 6 </span>
+        </p>
+        <a href="http://www.unread.today/posts/post/1722">
+          <h2 class="text-roboto-condensed uk-margin-remove unread-article" unread-tag="week1" articleid="1722"><span
+              class="text-blue dot unread-dot">●</span>
+            Сэтгэлийн дарамтнаас ангижрах нь: Минимализм гэж юу вэ? </h2>
+        </a>
+      </div>
+      <div class="unreadbubble">
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12 uk-float-right remove-float-small">Пүрэв
+        </p>
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12">
+          <a href="http://www.unread.today/posts/category/4" class="uk-text-bold uk-margin-right">Мэдүүштэй</a> <span>•<i
+              class="uk-icon-eye uk-margin-left"></i> 11506 &nbsp; <i class="uk-icon-comment"></i> 6 </span>
+        </p>
+        <a href="http://www.unread.today/posts/post/1718">
+          <h2 class="text-roboto-condensed uk-margin-remove unread-article" unread-tag="week1" articleid="1718"><span
+              class="text-blue dot unread-dot">●</span>
+            Амттай аялал: Улаанбаатар хотын онцлох 13 кофе шоп </h2>
+        </a>
+      </div>
+      <div class="unreadbubble">
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12 uk-float-right remove-float-small">Лхагва
+        </p>
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12">
+          <a href="http://www.unread.today/posts/category/3" class="uk-text-bold uk-margin-right">Би хэрхэн ажилладаг
+            вэ?</a> <span>•<i class="uk-icon-eye uk-margin-left"></i> 26471 &nbsp; <i class="uk-icon-comment"></i> 1
+          </span>
+        </p>
+        <a href="http://www.unread.today/posts/post/1719">
+          <h2 class="text-roboto-condensed uk-margin-remove unread-article" unread-tag="week1" articleid="1719"><span
+              class="text-blue dot unread-dot">●</span>
+            Би хэрхэн ажилладаг вэ? - Travelocity.com, Kayak.com-ийн үүсгэн байгуулагч, энтрепренер, илтгэгч Терри
+            Жонеc </h2>
+        </a>
+      </div>
+      <div class="unreadbubble">
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12 uk-float-right remove-float-small">Мягмар
+        </p>
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12">
+          <a href="http://www.unread.today/posts/category/8" class="uk-text-bold uk-margin-right">Бизнес Зөвлөгөө</a>
+          <span>•<i class="uk-icon-eye uk-margin-left"></i> 11505 &nbsp; <i class="uk-icon-comment"></i> 2 </span>
+        </p>
+        <a href="http://www.unread.today/posts/post/1717">
+          <h2 class="text-roboto-condensed uk-margin-remove unread-article" unread-tag="week1" articleid="1717"><span
+              class="text-blue dot unread-dot">●</span>
+            Байгууллагын үр бүтээмжийг нэмэх 4 чухал зүйл </h2>
+        </a>
+      </div>
+      <div class="unreadbubble">
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12 uk-float-right remove-float-small">Мягмар
+        </p>
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12">
+          <a href="http://www.unread.today/posts/category/5" class="uk-text-bold uk-margin-right">#Random</a> <span>•<i
+              class="uk-icon-eye uk-margin-left"></i> 20215 &nbsp; <i class="uk-icon-comment"></i> 8 </span>
+        </p>
+        <a href="http://www.unread.today/posts/post/1713">
+          <h2 class="text-roboto-condensed uk-margin-remove unread-article" unread-tag="week1" articleid="1713"><span
+              class="text-blue dot unread-dot">●</span>
+            Санал болгох: Энэ сард заавал үзэх 7 кино </h2>
+        </a>
+      </div>
+      <div class="unreadbubble banner">
+        <a href="http://www.unread.today/posts/post/1716"><img src="./unread_files/511512a84c1d67b4d1961bd2658cf06b.jpeg"
+            width="300" alt=""></a></div>
+      <div class="unreadbubble">
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12 uk-float-right remove-float-small">Даваа
+        </p>
+        <p class="uk-margin-remove text-roboto-condensed uk-text-uppercase uk-text-muted text-12">
+          <a href="http://www.unread.today/posts/category/2" class="uk-text-bold uk-margin-right">Онцлох Бизнес</a>
+          <span>•<i class="uk-icon-eye uk-margin-left"></i> 12192 &nbsp; <i class="uk-icon-comment"></i> 5 </span>
+        </p>
+        <a href="http://www.unread.today/posts/post/1716">
+          <h2 class="text-roboto-condensed uk-margin-remove unread-article" unread-tag="week1" articleid="1716"><span
+              class="text-blue dot unread-dot">●</span>
+            Онцлох бизнес: Amigo Foodhouse - Хоол бүрээс хосгүй амтыг </h2>
+        </a>
+      </div>
+      <div id="prevWeekPosts">
+      </div>
+
+
+      <div class="unreadbubblebutton" id="showMoreButton">
+        <a href="javascript:;" onclick="getPrevWeek()">Цааш нь унших <i class="uk-icon-angle-right uk-margin-small-left"></i></a>
+      </div>
+      <div class="unreadbubble typing" style="display:none">
+        <img src="./unread_files/typing.gif" width="32" style="opacity: 0.4;" alt=""> </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var loading = false;
+    var weekStep = 2;
+    function getPrevWeek() {
+      if (loading) {
+        return;
+      }
+      loading = true;
+      $(".typing").show();
+      setTimeout(getData, 1000);
+    }
+
+    function getData() {
+      $.ajax({
+        url: "/posts/ajax_getPrevWeekPost2",
+        type: "POST",
+        dataType: "json",
+        data: { "week_step": weekStep }
+      }).done(function (data) {
+        showData(data.responseText
+        );
+      }).fail(function (data) {
+        if (data.status === 200) {
+          showData(data.responseText
+          );
+        }
+
+        console.log(data);
+      }).always(function () {
+        $(".typing").hide();
+        loading = false;
+      });
+    }
+
+    function showData(html) {
+      if (html !== "") {
+        var el = $("#prevWeekPosts");
+        el.append(html);
+        weekStep++;
+        checkAllArticles();
+      } else {
+        $("#showMoreButton").hide();
+      }
+    }
+  </script>
+
+  <div id="mc_embed_signup" class="weeklysubscribe">
+    <div class="uk-container uk-container-center uk-text-uppercase text-roboto-condensed uk-text-center">
+      <img src="./unread_files/weekly.png" width="200" alt="">
+      <p class="uk-text-bold">Unread Weekly цахим товхимолд бүртгүүлээрэй.</p>
+      <form action="https://today.us17.list-manage.com/subscribe/post?u=36d1408fd7b4f6515774b13ef&amp;id=1b8f80969b"
+        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank"
+        autocomplete="off">
+        <div id="mc_embed_signup_scroll">
+          <div class="mc-field-group">
+            <p>
+              <input type="email" class="subscribeinput" placeholder="Таны имэйл" value="" name="EMAIL" id="mce-EMAIL">
+              <a href="http://www.unread.today/#" id="mc-embedded-subscribe" class="subscribebutton uk-margin-small-left"><i
+                  class="uk-icon-chevron-circle-right"></i></a>
+            </p>
+          </div>
+          <div id="mce-responses" class="clear">
+            <div class="response" id="mce-error-response" style="display:none"></div>
+            <div class="response" id="mce-success-response" style="display:none"></div>
+          </div>
+          <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_36d1408fd7b4f6515774b13ef_1b8f80969b"
+              tabindex="-1" value=""></div>
+          <div class="clear" style="display:none"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
+              class="button"></div>
+        </div>
+      </form>
+    </div>
+
+    <script type="text/javascript">
+      var form = document.getElementById("mc-embedded-subscribe-form");
+
+      document.getElementById("mc-embedded-subscribe").addEventListener("click", function () {
+        form.submit();
+      });
+    </script>
+  </div>
+
+  <div class="footer text-roboto-condensed uk-text-uppercase ">
+    <div class="uk-container uk-container-center uk-text-center">
+      <p class="text-12 uk-text-bold text-blue2">Булангууд</p>
+      <p class="text-20">
+        <a href="http://www.unread.today/posts/category/2">Онцлох Бизнес</a><br><a href="http://www.unread.today/posts/category/1">Апп
+          Тойм</a><br><a href="http://www.unread.today/posts/category/3">Би хэрхэн ажилладаг вэ?</a><br><a href="http://www.unread.today/posts/category/4">Мэдүүштэй</a><br><a
+          href="http://www.unread.today/posts/category/5">#Random</a><br><a href="http://www.unread.today/posts/category/6">Номын
+          хэсгээс</a><br><a href="http://www.unread.today/posts/category/7">7 Хоногийн Тойм</a><br><a href="http://www.unread.today/posts/category/8">Бизнес
+          Зөвлөгөө</a><br><a href="http://www.unread.today/posts/category/10">Тогтвортой хөгжлийн зорилгууд </a><br>
+      </p>
+      <hr class="silver uk-margin-large">
+      <p>
+        <img src="./unread_files/unread_white.png" alt="Unread" width="130"> </p>
+      <p>Бүтээгч хүмүүст зориулав. Өдөр тутам, алдалгүй унш.</p>
+      <p>
+        <a href="https://play.google.com/store/apps/details?id=batu.digital.unreadmobile" target="_blank">
+          <img src="./unread_files/playstore.png" width="130" style="border-radius: 7px; border: 1px solid #999;" alt="">
+        </a>
+        <a href="https://itunes.apple.com/mn/app/unread-today/id1100135982?mt=8" target="_blank">
+          <img src="./unread_files/appstore.png" width="130" style="border-radius: 7px; border: 1px solid #999;" alt="">
+        </a>
+      </p>
+      <p class="text-12">© 2015-2018 Анрид ХХК. Бүх эрх хуулиар хамгаалагдсан.
+        <br> Нийтлэлүүдийг зөвшөөрөлгүйгээр болон дурдалгүйгээр ахин нийтлэх, хэвлэх, иш татахыг хориглоно.</p>
+      <p class="uk-text-bold">
+        <a href="http://www.unread.today/pages/about#whoweare">Бид хэн бэ?</a> &nbsp;/&nbsp;
+        <a href="http://www.unread.today/posts/category/9">Блог</a> &nbsp;/&nbsp;
+        <!--TODO: New page?-->
+        <a href="http://www.unread.today/posts/category/11">Ажлын байр</a> &nbsp;/&nbsp;
+        <a href="http://www.unread.today/pages/about#contact">Холбогдох</a> </p>
+
+      <p>
+        <a href="https://www.facebook.com/UnreadToday" target="_blank" class="uk-margin-remove">
+          <img src="./unread_files/facebook.png" alt="Facebook" width="32"> </a>&nbsp;
+        <a href="https://www.twitter.com/UnreadToday" target="_blank" class="uk-margin-remove">
+          <img src="./unread_files/twitter.png" alt="Twitter" width="32"> </a>&nbsp;
+        <a href="https://www.instagram.com/UnreadToday" target="_blank">
+          <img src="./unread_files/instagram.png" alt="Instagram" width="32"> </a>
+      </p>
+      <p class="text-12 uk-margin-large-top">
+        Технологи / дизайны түнш:
+        <a href="http://www.batu.digital/" target="_blank">
+          <img src="./unread_files/batu_white.png" alt="Batu Digital" width="43" style="margin-bottom: 3px;"> </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="./unread_files/addthis_widget.js" async="async"></script>
+
+  <!-- Google Analytics -->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-61909596-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+  <script type="text/javascript">
+
+    $(function () {
+      checkAllArticles();
+
+
+      //        if (window.addEventListener) {
+      //            window.addEventListener("storage", handle_storage, false);
+      //        } else {
+      //            window.attachEvent("onstorage", handle_storage);
+      //        }
+
+      $(window).bind('storage', function (e) {
+        if (e.originalEvent.key == "pd.unread.articles")
+          checkAllArticles();
+        //console.log(e.originalEvent.key, e.originalEvent.newValue);
+      });
+    });
+
+    function checkAllArticles() {
+      var unreadTotal = 0;
+      var unreadTag = undefined;
+      $(".unread-article").each(function () {
+        var aId = $(this).attr("articleid");
+        var curTag = $(this).attr("unread-tag");
+        if (curTag !== unreadTag) {
+          if (unreadTag) {
+            var el = $('.unread-total[unread-tag=' + unreadTag + ']');
+            setTotal(unreadTotal++, el);
+            unreadTotal = 0;
+            unreadTag = curTag;
+          } else {
+            unreadTag = curTag;
+          }
+        }
+        if (!checkReadArticle(aId)) {
+          unreadTotal++;
+        } else {
+          $(this).children('.unread-dot').remove();
+          if (unreadTag !== "thisweek")
+            $(this).wrapInner('<h3  class="text-roboto-condensed uk-margin-remove" />').children().unwrap();
+        }
+      });
+      var el = $('.unread-total[unread-tag=' + unreadTag + ']');
+      setTotal(unreadTotal, el);
+    }
+
+    function setTotal(total, element) {
+      element.children(".unread-total-number").remove();
+      if (total > 0)
+        element.append('<span class="unreadbadge uk-float-left unread-total-number" title="Таны уншаагүй нийтлэлийн тоо">' + total + '</span>');
+    }
+
+    function saveReadArticle(id) {
+      if (!supports_html5_storage()) {
+        return false;
+      }
+      id = id.toString();
+      if (!localStorage["pd.unread.articles"]) {
+        localStorage["pd.unread.articles"] = id;
+      } else {
+        var readArticles = localStorage["pd.unread.articles"].split(',');
+        if (readArticles.indexOf(id) === -1) {
+          readArticles.push(id);
+          localStorage["pd.unread.articles"] = readArticles.toString();
+        }
+      }
+      return true;
+    }
+
+    function checkReadArticle(id) {
+      if (!supports_html5_storage()) {
+        return false;
+      }
+      id = id.toString();
+      if (!localStorage["pd.unread.articles"]) {
+        return false;
+      } else {
+        var readArticles = localStorage["pd.unread.articles"].split(',');
+        if (readArticles.indexOf(id) > -1)
+          return true;
+      }
+      return false;
+    }
+
+    function supports_html5_storage() {
+      try {
+        return 'localStorage' in window && window['localStorage'] !== null;
+      } catch (e) {
+        return false;
+      }
+    }
+
+  </script>
+  <script src="main.js"></script>
+</body>
+
+</html>
