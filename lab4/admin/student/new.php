@@ -1,34 +1,33 @@
 <?php
-	require_once('../../logic/initialize.php');
+    require_once '../../logic/initialize.php';
 ?>
 
 <?php
-	// Checking request and deal with it
-	$student = [];
+    // Checking request and deal with it
+    $student = [];
 
-	if (is_post_request())
-	{
-		$student['student_id'] = $_POST['student_id'] ?? '';
-		$student['last_name'] = $_POST['last_name'] ?? '';
-		$student['first_name'] = $_POST['first_name'] ?? '';
-		$student['sex'] = $_POST['sex'] ?? '';
-		$student['dob'] = $_POST['dob'] ?? '';
-		$student['password'] = $_POST['password'] ?? ''; 
-		$student['fk_program_id'] = $_POST['program_id'] ?? '';
+    if (is_post_request()) {
+        $student['student_id'] = $_POST['student_id'] ?? '';
+        $student['last_name'] = $_POST['last_name'] ?? '';
+        $student['first_name'] = $_POST['first_name'] ?? '';
+        $student['sex'] = $_POST['sex'] ?? '';
+        $student['dob'] = $_POST['dob'] ?? '';
+        $student['password'] = $_POST['password'] ?? '';
+        $student['fk_program_id'] = $_POST['program_id'] ?? '';
 
-		$result = insert_student($student);
-		if ($result === true) {
-			redirect_to(url_for('/admin/index.php'));
-		} else {
-			$errors = $result;
-		}
-	}
+        $result = insert_student($student);
+        if ($result === true) {
+            redirect_to(url_for('/admin/index.php'));
+        } else {
+            $errors = $result;
+        }
+    }
 ?>
 
 <?php
-	include_once(SHARED_PATH . '/main_header.php');
+    include_once SHARED_PATH.'/main_header.php';
 
-	$programs = find_all_pragram();
+    $programs = find_all_pragram();
 ?>
 
 <div class="page_heading">
@@ -66,13 +65,12 @@
 		<label for="program">Progarm</label>
 		<select name="program_id" class="form-control" id="program" required>
 			<?php
-			$html = '';
-				while ( $program_row = mysqli_fetch_assoc($programs) )
-				{
-					$html .= '<option value="'. $program_row['program_id'] .'">' . $program_row['program_id'] . '</option>';
-				}
-			echo $html;
-			?>
+            $html = '';
+                while ($program_row = mysqli_fetch_assoc($programs)) {
+                    $html .= '<option value="'.$program_row['program_id'].'">'.$program_row['program_id'].'</option>';
+                }
+            echo $html;
+            ?>
 		</select>
 	</div>
 
@@ -85,5 +83,5 @@
 </form>
 
 <?php
-	include_once(SHARED_PATH . '/main_footer.php');
+    include_once SHARED_PATH.'/main_footer.php';
 ?>

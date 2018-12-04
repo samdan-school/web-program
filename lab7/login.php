@@ -1,48 +1,46 @@
 <?php
-	require_once('./logic/initialize.php');
+    require_once './logic/initialize.php';
 
-	$page_title = 'Log in';
+    $page_title = 'Log in';
 
-	if (is_logged_in_student()) {
-		redirect_to(url_for('/index.php'));
-	}
-	
+    if (is_logged_in_student()) {
+        redirect_to(url_for('/index.php'));
+    }
+
     $errors = [];
     $username = '';
     $password = '';
 
-	if (is_post_request()) {
-		$user_id = $_POST['user_id'] ?? '';
-		$password = $_POST['password'] ?? '';
-		$remember_me = $_POST['remember_me'] ?? '';
+    if (is_post_request()) {
+        $user_id = $_POST['user_id'] ?? '';
+        $password = $_POST['password'] ?? '';
 
-		if ( $user = find_users_by_id($_POST['user_id']) ) {
-			if ( password_verify($password, $user['password']) ) {
+        if ($user = find_users_by_id($_POST['user_id'])) {
+            if (password_verify($password, $user['password'])) {
+                if ($remember_me) {
+                    setcookie('user_id', $user_id, time() + 86400, '/'); // 86400 = 1 day and global path usage cookie
+                }
 
-				if ($remember_me) {
-					setcookie('user_id', $user_id, time() + 86400, "/"); // 86400 = 1 day and global path usage cookie
-				}
+                if ($user['user_id'][0] == 's' && log_in($user)) {
+                    redirect_to(url_for('/index.php'));
+                }
 
-				if ( $user['user_id'][0] == 's' && log_in($user)) {
-					redirect_to(url_for('/index.php'));
-				}
-
-			if ( $student = find_student_by_id( sanitizeString($_POST['student_id'])) ) {	
-				if ( $student['password'] == sanitizeString($_POST['password'])  ) {
-					redirect_to(url_for('/index.php?s_id=' . $_POST['student_id']));
-				}
-			} else {
-				redirect_to(url_for('/login.php'));
-			}
-		} else {
-			redirect_to(url_for('/login.php'));
-		}			
-	}
-}
+                if ($student = find_student_by_id(sanitizeString($_POST['student_id']))) {
+                    if ($student['password'] == sanitizeString($_POST['password'])) {
+                        redirect_to(url_for('/index.php?s_id='.$_POST['student_id']));
+                    }
+                } else {
+                    redirect_to(url_for('/login.php'));
+                }
+            } else {
+                redirect_to(url_for('/login.php'));
+            }
+        }
+    }
 ?>
 
 <?php
-	include_once(SHARED_PATH . '/login_header.php');
+    include_once SHARED_PATH.'/login_header.php';
 ?>
 
 <div class="page_heading">
@@ -66,11 +64,6 @@
 	</div>
 	
 	<div class="form-group form-check">
-		<input name="remember_me" type="checkbox" class="form-check-input" id="remember_me">
-		<label class="form-check-label" for="remember_me">Remember Me</label>
-  	</div>
-	
-	<div class="form-group form-check">
   		<a href="new.php">Бүртгүүлэх</a>
   	</div>
 
@@ -78,5 +71,5 @@
 </form>
 
 <?php
-	include_once(SHARED_PATH . '/main_footer.php');
+    include_once SHARED_PATH.'/main_footer.php';
 ?>

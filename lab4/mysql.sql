@@ -28,6 +28,7 @@ CREATE TABLE program (
 
 CREATE TABLE course (
     course_id VARCHAR(4),
+    program_id VARCHAR(4),
     course_name VARCHAR(30),
     credit TINYINT,
    
@@ -79,10 +80,10 @@ INSERT INTO student VALUES
 
 -- inserting values into course
 INSERT INTO course VALUES
-('ccs0', 'Intro to Computer Science', 2),
-('ccs1', 'Advanced Algorithm', 3),
-('cmt1', 'Math 1b', 3),
-('cph1', 'Engineering Physics', 3);
+('ccs0', 'pcs1', 'Intro to Computer Science', 2),
+('ccs1', 'pcs1', 'Advanced Algorithm', 3),
+('cmt1', 'pmt3', 'Math 1b', 3),
+('cph1', 'pph2', 'Engineering Physics', 3);
 
 -- inserting values into course_enrollment
 INSERT INTO course_enrollment VALUES
@@ -111,6 +112,12 @@ INSERT INTO staff VALUES
 ALTER TABLE student
 	ADD CONSTRAINT fk_student_program
 	FOREIGN KEY (fk_program_id) REFERENCES program(program_id)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE;
+
+ALTER TABLE course
+	ADD CONSTRAINT fk_course_program
+	FOREIGN KEY (program_id) REFERENCES program(program_id)
 	ON UPDATE CASCADE
 	ON DELETE CASCADE;
     

@@ -2,10 +2,13 @@
 
 <html lang="en">
   <head>
-    <title>Student App <?php if(isset($page_title)) { echo '- ' . h($page_title); } ?></title>
+    <title>Student App <?php if (isset($page_title)) {
+    echo '- '.h($page_title);
+} ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" media="all" href="<?php echo url_for('static/stylesheet/bootstrap.css'); ?>" />
     <link rel="stylesheet" media="all" href="<?php echo url_for('static/stylesheet/main.css'); ?>" />
+		<script src="<?php echo url_for('static/javascript/my.js'); ?>"></script>
   </head>
 
   <body>
@@ -19,7 +22,7 @@
 			<img src="<?php echo url_for('/static/images/sisi_logo.png'); ?>" width="150" height="90" alt="" />
 			</a>
 		</h1>
-		<?php include_once SHARED_PATH . '/main_navigation.php'; ?>
+		<?php include_once SHARED_PATH.'/main_navigation.php'; ?>
 		</header>
 	</div>
 
