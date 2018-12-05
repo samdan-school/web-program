@@ -3,8 +3,21 @@
     $returnText = '';
 
     if (is_post_request()) {
-        header('Content-Type: text/xml');
+        if (isset($_POST['captcha'])) {
+            $random_alpha = md5(rand());
+            $captcha_code = substr($random_alpha, 0, 6);
+            $_SESSION['captcha_code'] = $captcha_code;
+            $target_layer = imagecreatetruecolor(70, 30);
+            $captcha_background = imagecolorallocate($target_layer, 255, 160, 119);
+            imagefill($target_layer, 0, 0, $captcha_background);
+            $captcha_text_color = imagecolorallocate($target_layer, 0, 0, 0);
+            imagestring($target_layer, 5, 5, 5, $captcha_code, $captcha_text_color);
+            header('Content-type: image/png');
+            imagepng($target_layer);
+            // imagedestroy($im);
+        }
         if (isset($_POST['student_id']) && isset($_POST['xml'])) {
+            header('Content-Type: text/xml');
             $id = $_POST['student_id'];
 
             $student = find_student_by_id($id);

@@ -173,3 +173,24 @@ function confirmLesson(user_id, selectedCourses) {
         ajaxRequest.send('confirm=' + JSON.stringify(confirmInfo));
     }
 }
+
+
+
+function refreshCaptcha() {
+    var captcha_code = document.getElementById('captcha_code');
+    var ajaxRequest = getXMLHttpRequest();
+    var requestUrl = '/captcha.php';
+
+    if (ajaxRequest) {
+        ajaxRequest.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this)
+                captcha_code.setAttribute('src', '/captcha.php');
+            } else {
+                return;
+            }
+        };
+        ajaxRequest.open('GET', requestUrl, true);
+        ajaxRequest.send(null);
+    }
+}

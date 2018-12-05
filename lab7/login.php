@@ -10,10 +10,16 @@
     $errors = [];
     $username = '';
     $password = '';
+    $captcha = '';
 
     if (is_post_request()) {
         $user_id = $_POST['user_id'] ?? '';
         $password = $_POST['password'] ?? '';
+        $captcha = $_POST['captcha'] ?? '';
+
+        if ($captcha !== $_SESSION['captcha_code']) {
+            redirect_to(url_for('/index.php'));
+        }
 
         if ($user = find_users_by_id($_POST['user_id'])) {
             if (password_verify($password, $user['password'])) {
@@ -67,8 +73,26 @@
   		<a href="new.php">Бүртгүүлэх</a>
   	</div>
 
+    <div>
+        <img id="captcha_code" src="captcha.php" />
+        <input type="button" id="refresh-captcha" value="Refresh Captcha"/>
+    </div>
+    <div class="form-group">
+        <br/>
+        <input required type="text" name="captcha" id="captcha" class="demoInputBox"><br>
+    </div>
+
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<script>
+    window.onload = function() {
+        var refreshCaptchaBtn = document.getElementById('refresh-captcha');
+        refreshCaptchaBtn.addEventListener('click', () => {
+            refreshCaptcha();
+        });
+    };
+</script>
 
 <?php
     include_once SHARED_PATH.'/main_footer.php';
