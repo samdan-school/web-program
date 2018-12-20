@@ -49,7 +49,7 @@ api.get('/upload-photo', (req, res) => {
         captureTime: 1545325560
     }];
 
-    svpa.uploadAPhoto(photoInfos[1], (error, response, body) => {
+    svpa.uploadAPhoto(photoInfos[0], (error, response, body) => {
         if (error) {
             res.send(error);
         }
@@ -88,7 +88,21 @@ api.get('/update-photo', (req, res) => {
         },
         'updateMask': 'connections'
     }];
-
+    // Жишээ мэдээлэл
+    const demoPhotoUpdateInfo = [{
+        "photo": {
+            "photoId": {
+                "id": "CAoSLEFGMVFpcE5NLWNYXzhrYVNYUFlkSHk3cGtjVW1EdW9NR3h2Uk94bFlkMWtR"
+            },
+            "pose": {
+                "latLngPair": {
+                    "latitude": 37.1701638,
+                    "longitude": -122.3624387
+                }
+            }
+        },
+        "updateMask": "pose.latLngPair"
+    }]
     svpa.updatePhotos(photosUpdateInfo, (error, response, body) => {
         if (error) {
             res.send(error);
