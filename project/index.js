@@ -10,7 +10,7 @@ const api = require('./api/index')
 
 app.use('/api/', api);
 app.get('/', (req, res) => {
-    res.send('hello world')
+    res.json('hello world')
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
